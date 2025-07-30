@@ -172,7 +172,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useCashFlowStore } from '../stores/cashFlow'
 import { useGuideStore } from '../stores/guidesStore'
 import type { CashFlowItem, guideWithRelationsItem } from '../api/api'

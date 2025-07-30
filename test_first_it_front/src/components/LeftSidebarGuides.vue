@@ -76,7 +76,6 @@ import type {
 import type {
     GuideType,
 } from '../stores/guidesStore.ts'
-import { ref } from 'vue'
 
 const store = useGuideStore()
 

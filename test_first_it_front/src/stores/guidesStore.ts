@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { apiInstance } from '../api/api'
-import type { defaultGuideItem, GuideItem, guideWithRelationsItem } from '../api/api'
+import type { GuideItem, guideWithRelationsItem } from '../api/api'
 
 export type GuideType = 'statuses' | 'operations' | 'categories' | 'subcategories'
 

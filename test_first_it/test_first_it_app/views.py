@@ -15,10 +15,14 @@ class GuideAPIView(APIView):
         factory = GuideFactory(guide=model)
         if not obj_id:
             objects_list = factory.get_all_list()
-            if type == 'subcategorys':
+            if type == 'subcategories':
                 # Почва для оптимизации: скорее всего возникает проблема с запросами N + 1
                 response_data = [
-                    {'id': element.id, 'name': element.name, 'category': element.category.name}
+                    {'id': element.id, 'name': element.name, 'category': {
+                        'id': element.category.id,
+                        'name': element.category.name
+                        }
+                    }
                     for element in objects_list
                 ]
             else:

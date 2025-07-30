@@ -1,0 +1,36 @@
+
+services:
+  db: 
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: first_test_it
+      POSTGRES_USER: postgres,
+      POSTGRES_PASSWORD: postgres
+
+  backend:
+    build: ./test_first_it
+    command: python manage.py migrate && guincorn test_first_it.test_first_it.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/first_test_it
+      SECRET_KEY: django-insecure-qjwyqb295a34390x-^3_f85!x2%a5c(zx!i15rv@!pvmag^0ms
+      DEBUG: 0
+    depends_on:
+      - db
+    ports:
+      - "5443:5443"
+  
+  frontend:
+    build: 
+      context: ./test_first_it_front
+      dockerfile: Dockerfile 
+      args: 
+        VITE_API_URL: ${API_URL}
+    volumes:
+      - ./frontend:/app
+    ports: 
+      - "5080:5080"
+    restart: unless_stopped

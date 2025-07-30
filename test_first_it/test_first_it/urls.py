@@ -37,4 +37,10 @@ urlpatterns = [
         views.CashFlowGenericAPIView.as_view(), 
         name='cashflow-list'
     ),
+
+    path(
+        'api/cashflows/<str:obj_id>/',
+        views.CashFlowGenericAPIView.as_view(),
+        name='cashflow-list-details'
+    )
 ]

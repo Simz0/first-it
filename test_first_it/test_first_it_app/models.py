@@ -96,8 +96,8 @@ class CashFlow(models.Model):
 
 guides_kw = {
     'operations': OperationType,
-    'categorys': Category,
-    'subcategorys': Subcategory,
+    'categories': Category,
+    'subcategories': Subcategory,
     'statuses': StatusType
 }
 
@@ -125,9 +125,8 @@ class GuideFactory:
 
         return new_object
     
-    def update_name_or_category(self, id: str, data: {'name': str} | {'category': str} | {'name': str, 'category': str}):
+    def update_name_or_category(self, id: str, data: dict['name': str] | dict['category': str] | dict['name': str, 'category': str]):
         if 'category' in data:
-            # object = self.guide.objects.get(id=id)
             category = Category.objects.get(id=data['category'])
             data['category'] = category
             return self.guide.objects.update(

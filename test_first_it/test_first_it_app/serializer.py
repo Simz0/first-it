@@ -7,6 +7,7 @@ class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = StatusType
         fields = [
+            'id',
             'name'
         ]
 
@@ -15,6 +16,7 @@ class OperationSerializer(serializers.ModelSerializer):
     class Meta:
         model = OperationType
         fields = [
+            'id',
             'name'
         ]
 

@@ -178,3 +178,9 @@ class CashFlowGenericAPIView(generics.ListCreateAPIView):
             'category__category'
         ).order_by('-created_at')
     
+    def delete(self, request, obj_id, format=None):
+        print('obj_id', obj_id)
+        object = CashFlow.objects.get(id=obj_id)    
+        object.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
